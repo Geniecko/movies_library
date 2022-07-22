@@ -10,6 +10,14 @@
     "airbnb/hooks"
   ],
   "rules": {
-    "semi": "warn"
+    "semi": "warn",
+    "import/prefer-default-export": 0,
+    "react/function-component-definition": [
+      2,
+      {
+          "namedComponents": "arrow-function",
+          "unnamedComponents": "arrow-function"
+      }
+  ]
   }
 }
