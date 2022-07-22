@@ -1,5 +1,11 @@
 {
-  "extends": ["react-app", "react-app/jest", "prettier"],
+  "extends": [
+    "react-app",
+    "react-app/jest",
+    "prettier",
+    "airbnb",
+    "airbnb/hooks"
+  ],
   "rules": {
     "semi": "warn"
   }
