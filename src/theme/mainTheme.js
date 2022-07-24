@@ -3,6 +3,7 @@ export const themeLight = {
     primary: '#D82259',
     secondary: '#494949',
     grey: '#D0D0D0',
+    white: '#F2F2F2',
     pageBackground: '#F2F2F2',
   },
   breakpoints: {
