@@ -1,5 +1,5 @@
 import React from 'react';
 
-const SearchEngine = () => <p>Not Found</p>;
+const NotFoundPage = () => <p>Not Found</p>;
 
-export default SearchEngine;
+export default NotFoundPage;

@@ -4,6 +4,7 @@ import { NavLink } from 'react-router-dom';
 import styled from 'styled-components/macro';
 import Logo from './Logo';
 import LinkItem from './LinkItem';
+import { ROUTES } from '../constants/routes';
 
 const Sidebar = ({ isLogged }) => (
   <SidebarWrapper>
@@ -11,41 +12,41 @@ const Sidebar = ({ isLogged }) => (
     <NavigationWrapper>
       {isLogged && (
         <LinkItem>
-          <NavLink to="edit-profile">Edit profile</NavLink>
+          <NavLink to={ROUTES.USER}>Edit profile</NavLink>
         </LinkItem>
       )}
       {isLogged && (
         <LinkItem>
-          <NavLink to="watch-list">Watch list</NavLink>
+          <NavLink to={ROUTES.WATCHLIST}>Watch list</NavLink>
         </LinkItem>
       )}
       {isLogged && (
         <LinkItem>
-          <NavLink to="favourites">Favourites</NavLink>
+          <NavLink to={ROUTES.FAVOURITES}>Favourites</NavLink>
         </LinkItem>
       )}
       {isLogged && (
         <LinkItem>
-          <NavLink to="rated">rated</NavLink>
+          <NavLink to={ROUTES.RATED}>rated</NavLink>
         </LinkItem>
       )}
       {isLogged && (
         <LinkItem>
-          <NavLink to="watched">watched</NavLink>
+          <NavLink to={ROUTES.WATCHED}>watched</NavLink>
         </LinkItem>
       )}
       {!isLogged && (
         <LinkItem>
-          <NavLink to="sign-in">Sign in</NavLink>
+          <NavLink to={ROUTES.LOGIN}>Sign in</NavLink>
         </LinkItem>
       )}
       {!isLogged && (
         <LinkItem>
-          <NavLink to="register">Create account</NavLink>
+          <NavLink to={ROUTES.REGISTER}>Create account</NavLink>
         </LinkItem>
       )}
       <LinkItem>
-        <NavLink to="/">Search engine</NavLink>
+        <NavLink to={ROUTES.HOME}>Search engine</NavLink>
       </LinkItem>
     </NavigationWrapper>
   </SidebarWrapper>

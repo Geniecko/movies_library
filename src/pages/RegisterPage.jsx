@@ -1,5 +1,5 @@
 import React from 'react';
 
-const SearchEngine = () => <p>Register</p>;
+const RegisterPage = () => <p>Register</p>;
 
-export default SearchEngine;
+export default RegisterPage;
