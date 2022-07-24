@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components/macro';
 import { BrowserRouter } from 'react-router-dom';
 import MainTemplate from '../templates/MainTemplate';
-import Nav from '../components/Nav';
+import Nav from '../components/Navigation/Nav';
 import Routes from '../routes/Routes';
 
 const Root = () => (

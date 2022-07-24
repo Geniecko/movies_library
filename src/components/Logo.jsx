@@ -5,8 +5,9 @@ import { useNavigate } from 'react-router-dom';
 const LogoWrapper = styled.div`
   font-weight: 700;
   font-size: 2.4rem;
-  color: ${({ theme }) => theme.color.primary};
+  color: ${({ theme }) => theme.color.white};
   cursor: pointer;
+  transition: transform .3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 
   @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
     font-size: 3.2rem;
@@ -14,10 +15,14 @@ const LogoWrapper = styled.div`
     margin-bottom: 40px;
   }
 
+  &:hover{
+    transform: translateY(-8px);
+  }
+
   span {
     font-weight: 300;
     font-size: 1.6rem;
-    color: ${({ theme }) => theme.color.pageBackground};
+    color: ${({ theme }) => theme.color.primary};
     margin-left: 8px;
 
     @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {

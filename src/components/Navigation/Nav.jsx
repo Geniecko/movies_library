@@ -2,9 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components/macro';
-import Logo from './Logo';
+import Logo from '../Logo';
 import LinkItem from './LinkItem';
-import { ROUTES } from '../constants/routes';
+import Link from './Link';
+import { ROUTES } from '../../constants/routes';
 
 const Sidebar = ({ isLogged }) => (
   <SidebarWrapper>
@@ -12,41 +13,41 @@ const Sidebar = ({ isLogged }) => (
     <NavigationWrapper>
       {isLogged && (
         <LinkItem>
-          <NavLink to={ROUTES.USER}>Edit profile</NavLink>
+          <Link as={NavLink} to={ROUTES.USER}>Edit profile</Link>
         </LinkItem>
       )}
       {isLogged && (
         <LinkItem>
-          <NavLink to={ROUTES.WATCHLIST}>Watch list</NavLink>
+          <Link as={NavLink} to={ROUTES.WATCHLIST}>Watch list</Link>
         </LinkItem>
       )}
       {isLogged && (
         <LinkItem>
-          <NavLink to={ROUTES.FAVOURITES}>Favourites</NavLink>
+          <Link as={NavLink} to={ROUTES.FAVOURITES}>Favourites</Link>
         </LinkItem>
       )}
       {isLogged && (
         <LinkItem>
-          <NavLink to={ROUTES.RATED}>rated</NavLink>
+          <Link as={NavLink} to={ROUTES.RATED}>rated</Link>
         </LinkItem>
       )}
       {isLogged && (
         <LinkItem>
-          <NavLink to={ROUTES.WATCHED}>watched</NavLink>
+          <Link as={NavLink} to={ROUTES.WATCHED}>watched</Link>
         </LinkItem>
       )}
       {!isLogged && (
         <LinkItem>
-          <NavLink to={ROUTES.LOGIN}>Sign in</NavLink>
+          <Link as={NavLink} to={ROUTES.LOGIN}>Sign in</Link>
         </LinkItem>
       )}
       {!isLogged && (
         <LinkItem>
-          <NavLink to={ROUTES.REGISTER}>Create account</NavLink>
+          <Link as={NavLink} to={ROUTES.REGISTER}>Create account</Link>
         </LinkItem>
       )}
       <LinkItem>
-        <NavLink to={ROUTES.HOME}>Search engine</NavLink>
+        <Link as={NavLink} to={ROUTES.HOME}>Search engine</Link>
       </LinkItem>
     </NavigationWrapper>
   </SidebarWrapper>
