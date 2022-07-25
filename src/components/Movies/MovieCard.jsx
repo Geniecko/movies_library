@@ -71,6 +71,11 @@ const Title = styled.h2`
   font-size: 2rem;
   margin-top: 16px;
   margin-bottom: 32px;
+  -webkit-line-clamp: 3;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;  
+  overflow: hidden;
 `;
 
 const InfoWrapper = styled.div`

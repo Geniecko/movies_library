@@ -9,7 +9,7 @@ const Root = () => (
   <BrowserRouter>
     <MainTemplate>
       <AppContainer>
-        <Nav isLogged={false} />
+        <Nav isLogged />
         <ContentContainer>
           <Routes />
         </ContentContainer>
