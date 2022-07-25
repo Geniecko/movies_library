@@ -5,6 +5,7 @@ import LoginPage from '../pages/LoginPage';
 import RegisterPage from '../pages/RegisterPage';
 import NotFoundPage from '../pages/NotFoundPage';
 import { ROUTES } from '../constants/routes';
+import FavourtiesPage from '../pages/FavouritesPage';
 
 const Routes = () => (
   <RoutesWrapper>
@@ -13,6 +14,7 @@ const Routes = () => (
     <Route path={ROUTES.HOME} element={<SearchEnginePage />} />
     <Route path={ROUTES.LOGIN} element={<LoginPage />} />
     <Route path={ROUTES.REGISTER} element={<RegisterPage />} />
+    <Route path={ROUTES.FAVOURITES} element={<FavourtiesPage />} />
   </RoutesWrapper>
 );
 
