@@ -11,6 +11,7 @@ const Header = ({ title, subtitle, position }) => (
 
 const HeaderWrapper = styled.header`
   width: 100%;
+  margin-bottom: 32px;
   text-align: ${({ position }) => position};
 
   h1 {
