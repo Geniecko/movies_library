@@ -40,7 +40,7 @@ const SearchEngine = () => {
         value={searchValue}
         onChange={handleOnChange}
       />
-      <MovieList movies={movies} />
+      <MovieList movies={movies} setMovies={setMovies} />
     </>
   );
 };

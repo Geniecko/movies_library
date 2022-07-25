@@ -2,8 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components/macro';
 import MovieCard from './MovieCard';
+import MoviesFilter from './MoviesFilter';
 
-const MovieList = ({ movies }) => {
+const MovieList = ({ movies, setMovies }) => {
   const moviesList = movies.map((movie) => (
     <MovieCard
       key={movie.imdbID}
@@ -16,14 +17,25 @@ const MovieList = ({ movies }) => {
 
   return (
     <>
-      <NumberFound>
-        Found:
-        <span>{moviesList.length || 'No results'}</span>
-      </NumberFound>
+      <FilterPanel>
+        <NumberFound>
+          Found:
+          <span>{moviesList.length || 'No results'}</span>
+        </NumberFound>
+        <MoviesFilter movies={movies} setMovies={setMovies} />
+      </FilterPanel>
       <GridWrapper>{moviesList}</GridWrapper>
     </>
   );
 };
+
+const FilterPanel = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: space-between;
+  align-items: center;
+`;
 
 const NumberFound = styled.div`
   font-size: 1.4rem;
@@ -61,6 +73,7 @@ const GridWrapper = styled.div`
 
 MovieList.propTypes = {
   movies: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
+  setMovies: PropTypes.func.isRequired,
 };
 
 export default MovieList;
