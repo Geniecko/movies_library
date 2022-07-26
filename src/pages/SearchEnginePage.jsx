@@ -6,7 +6,7 @@ import { MovieSearchContext } from '../context/MovieContext';
 
 const pageTitles = {
   title: 'Search Engine',
-  subtitle: 'Enter the name of the movie you are looking for',
+  subtitle: 'Enter the name of the movie or series you are looking for',
 };
 
 const SearchEngine = () => {

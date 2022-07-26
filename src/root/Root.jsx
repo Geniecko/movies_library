@@ -20,12 +20,14 @@ const Root = () => (
 
 const AppContainer = styled.div`
   position: relative;
-  max-width: 1920px;
+  max-width: 1320px;
   margin: 0 auto;
 `;
 
 const ContentContainer = styled.main`
   padding: 84px 16px 24px 16px;
+  min-height: 100vh;
+  background-color: ${({ theme }) => theme.color.pageBackground};
 
   @media (min-width: ${({ theme }) => theme.breakpoints.phone}) {
     padding: 92px 32px 32px 32px;

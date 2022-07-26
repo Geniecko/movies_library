@@ -2,11 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components/macro';
 
-const MovieImage = ({ src, title }) => {
+const MovieImage = ({ src, title, click }) => {
   const isImage = src === ('N/A' || '') ? (
     <ImagePlaceHolder>No poster</ImagePlaceHolder>
   ) : (
-    <img src={src} alt={title} />
+    <Image src={src} alt={title} onClick={click} />
   );
 
   return <ImageWrapper>{isImage}</ImageWrapper>;
@@ -16,13 +16,13 @@ const ImageWrapper = styled.div`
   aspect-ratio: 3/3.5;
   overflow: hidden;
   border-radius: 4px;
+`;
 
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.3s ease-in;
-  }
+const Image = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease-in;
 `;
 
 const ImagePlaceHolder = styled.div`
@@ -40,11 +40,13 @@ const ImagePlaceHolder = styled.div`
 MovieImage.propTypes = {
   src: PropTypes.string,
   title: PropTypes.string,
+  click: PropTypes.func,
 };
 
 MovieImage.defaultProps = {
   src: 'N/A',
   title: '',
+  click: () => {},
 };
 
 export default MovieImage;

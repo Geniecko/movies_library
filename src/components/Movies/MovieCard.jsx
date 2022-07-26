@@ -16,9 +16,9 @@ const MovieCard = ({
   };
 
   return (
-    <CardWrapper onClick={handleOnClick}>
-      <MovieImage src={poster} title={title} />
-      <Title>{title}</Title>
+    <CardWrapper>
+      <MovieImage src={poster} title={title} click={handleOnClick} />
+      <Title onClick={handleOnClick}>{title}</Title>
       <InfoWrapper>
         <AdditionalInfo>
           Type:
@@ -29,7 +29,10 @@ const MovieCard = ({
           <span>{year}</span>
         </AdditionalInfo>
       </InfoWrapper>
-      <Button small>READ MORE</Button>
+      <ActionButton small secondary as={Button}>
+        ADD TO FAVOURITES
+      </ActionButton>
+      <Button small onClick={handleOnClick}>READ MORE</Button>
     </CardWrapper>
   );
 };
@@ -37,15 +40,16 @@ const MovieCard = ({
 const CardWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  cursor: pointer;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  padding: 16px;
+  border-radius: 8px;
 
-  &:hover ${Button} {
-    background-color: ${({ secondary, theme }) => (secondary ? theme.color.primary : theme.color.white)};
-    color: ${({ secondary, theme }) => (secondary ? theme.color.white : theme.color.primary)};
-  }
+  img {
+    cursor: pointer;
 
-  &:hover img{
-    transform: scale(1.05);
+    &:hover {
+      transform: scale(1.05);
+    }
   }
 `;
 
@@ -58,6 +62,13 @@ const Title = styled.h2`
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  transition: color 0.2s ease-in;
+  cursor: pointer;
+  align-self: flex-start;
+
+  &:hover {
+    color: ${({ theme }) => theme.color.primary};
+  }
 `;
 
 const InfoWrapper = styled.div`
@@ -70,16 +81,27 @@ const InfoWrapper = styled.div`
 `;
 
 const AdditionalInfo = styled.div`
+ text-transform: capitalize;
   display: block;
-  font-weight: 300;
+  font-weight: 600;
   font-size: 1.2rem;
+  color: ${({ theme }) => theme.color.primary};
 
   span {
-    text-transform: uppercase;
+    text-transform: capitalize;
     margin-left: 4px;
-    font-weight: 600;
-    color: ${({ theme }) => theme.color.primary};
+    font-weight: 300;
+    color: ${({ theme }) => theme.color.secondary};
   }
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
+    font-size: 1.4rem;
+  }
+`;
+
+const ActionButton = styled.button`
+  margin-bottom: 8px;
+  white-space: normal;
 `;
 
 MovieCard.propTypes = {

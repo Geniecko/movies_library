@@ -58,7 +58,12 @@ Sidebar.propTypes = {
 };
 
 const NavigationWrapper = styled.nav`
+  display: none;
   width: 100%;
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
+    display: block;
+  }
 `;
 
 const SidebarWrapper = styled.aside`

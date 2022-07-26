@@ -13,10 +13,14 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;
     min-height: 100vh;
-    font-size: 1rem;
+    font-size: 1.6rem;
     font-family: 'Barlow', sans-serif;
-    background-color: ${({ theme }) => theme.color.pageBackground};
+    background: ${({ theme }) => theme.color.pageBackground};
     color: ${({ theme }) => theme.color.secondary};
+
+    @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
+      background: linear-gradient(90deg, ${({ theme }) => theme.color.secondary} 50%, ${({ theme }) => theme.color.pageBackground} 50% 100%);
+    }
   }
 
   h1,h2,h3,h4,h5{

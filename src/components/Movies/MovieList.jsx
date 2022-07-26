@@ -36,13 +36,16 @@ const FilterPanel = styled.div`
   gap: 16px;
   justify-content: space-between;
   align-items: center;
+  margin-top: 32px;
+  margin-bottom: 16px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  padding: 16px;
+  border-radius: 8px;
 `;
 
 const NumberFound = styled.div`
   font-size: 1.4rem;
   font-weight: 300;
-  margin-top: 32px;
-  margin-bottom: 16px;
 
   span {
     margin-left: 6px;
@@ -54,21 +57,18 @@ const NumberFound = styled.div`
 const GridWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(1, 1fr);
-  gap: 24px;
+  gap: 16px;
 
   @media (min-width: ${({ theme }) => theme.breakpoints.phone}) {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
+    grid-template-columns: repeat(2, 1fr);
   }
 
   @media (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
-    grid-template-columns: repeat(4, 1fr);
-    gap: 24px;
+    grid-template-columns: repeat(3, 1fr);
   }
 
   @media (min-width: ${({ theme }) => theme.breakpoints.desktopLarge}) {
-    grid-template-columns: repeat(5, 1fr);
-    gap: 32px;
+    grid-template-columns: repeat(4, 1fr);
   }
 `;
 
