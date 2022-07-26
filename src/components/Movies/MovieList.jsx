@@ -12,6 +12,7 @@ const MovieList = ({ movies, setMovies }) => {
       poster={movie.Poster}
       year={movie.Year}
       type={movie.Type}
+      id={movie.imdbID}
     />
   ));
 

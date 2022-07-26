@@ -1,16 +1,23 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import styled from 'styled-components/macro';
+import { ROUTES } from '../../constants/routes';
 import Button from '../Button';
+import MovieImage from '../MovieImage';
 
 const MovieCard = ({
-  title, poster, year, type,
+  title, poster, year, type, id,
 }) => {
-  const isImage = poster === 'N/A' ? <ImagePlaceHolder>No poster</ImagePlaceHolder> : <Image src={poster} />;
+  const navigate = useNavigate();
+
+  const handleOnClick = () => {
+    navigate(`${ROUTES.MOVIES}/${id}`);
+  };
 
   return (
-    <CardWrapper>
-      <ImageWrapper>{isImage}</ImageWrapper>
+    <CardWrapper onClick={handleOnClick}>
+      <MovieImage src={poster} title={title} />
       <Title>{title}</Title>
       <InfoWrapper>
         <AdditionalInfo>
@@ -27,42 +34,17 @@ const MovieCard = ({
   );
 };
 
-const ImageWrapper = styled.div`
-  aspect-ratio: 3/3.5;
-  overflow: hidden;
-  border-radius: 4px;
-`;
-
-const Image = styled.img`
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform .3s ease-in;
-`;
-
-const ImagePlaceHolder = styled.div`
-  width: 100%;
-  height: 100%;
-  background-color: ${({ theme }) => theme.color.grey};
-  font-size: 1.8rem;
-  font-weight: 700;
-  color: ${({ theme }) => theme.color.white};
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
 const CardWrapper = styled.div`
   display: flex;
   flex-direction: column;
   cursor: pointer;
 
-  &:hover ${Button}{
+  &:hover ${Button} {
     background-color: ${({ secondary, theme }) => (secondary ? theme.color.primary : theme.color.white)};
     color: ${({ secondary, theme }) => (secondary ? theme.color.white : theme.color.primary)};
   }
 
-  &:hover ${Image}{
+  &:hover img{
     transform: scale(1.05);
   }
 `;
@@ -74,7 +56,7 @@ const Title = styled.h2`
   -webkit-line-clamp: 3;
   display: -webkit-box;
   -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;  
+  -webkit-box-orient: vertical;
   overflow: hidden;
 `;
 
@@ -92,11 +74,11 @@ const AdditionalInfo = styled.div`
   font-weight: 300;
   font-size: 1.2rem;
 
-  span{
+  span {
     text-transform: uppercase;
     margin-left: 4px;
     font-weight: 600;
-    color: ${({ theme }) => theme.color.primary};  
+    color: ${({ theme }) => theme.color.primary};
   }
 `;
 
@@ -105,6 +87,7 @@ MovieCard.propTypes = {
   poster: PropTypes.string.isRequired,
   year: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
 };
 
 export default MovieCard;

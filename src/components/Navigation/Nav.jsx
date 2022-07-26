@@ -47,7 +47,7 @@ const Sidebar = ({ isLogged }) => (
         </LinkItem>
       )}
       <LinkItem>
-        <Link as={NavLink} to={ROUTES.HOME}>Search engine</Link>
+        <Link as={NavLink} end to={ROUTES.MOVIES}>Search engine</Link>
       </LinkItem>
     </NavigationWrapper>
   </SidebarWrapper>

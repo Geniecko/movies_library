@@ -1,5 +1,6 @@
 export const ROUTES = {
-  HOME: '/',
+  MOVIES: '/movies',
+  MOVIESDETAILS: '/movies/:id',
   USER: '/user',
   LOGIN: '/login',
   REGISTER: '/register',

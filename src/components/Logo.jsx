@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components/macro';
 import { useNavigate } from 'react-router-dom';
+import { ROUTES } from '../constants/routes';
 
 const LogoWrapper = styled.div`
   font-weight: 700;
@@ -37,7 +38,7 @@ const Logo = () => {
   const navigate = useNavigate();
 
   const handleOnClick = () => {
-    navigate('/');
+    navigate(`${ROUTES.MOVIES}`);
   };
 
   return (
