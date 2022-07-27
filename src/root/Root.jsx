@@ -1,21 +1,25 @@
 import React from 'react';
+import { Provider } from 'react-redux';
 import styled from 'styled-components/macro';
 import { BrowserRouter } from 'react-router-dom';
 import MainTemplate from '../templates/MainTemplate';
 import Nav from '../components/Navigation/Nav';
 import Routes from '../routes/Routes';
+import { store } from '../store/store';
 
 const Root = () => (
-  <BrowserRouter>
-    <MainTemplate>
-      <AppContainer>
-        <Nav isLogged />
-        <ContentContainer>
-          <Routes />
-        </ContentContainer>
-      </AppContainer>
-    </MainTemplate>
-  </BrowserRouter>
+  <Provider store={store}>
+    <BrowserRouter>
+      <MainTemplate>
+        <AppContainer>
+          <Nav isLogged />
+          <ContentContainer>
+            <Routes />
+          </ContentContainer>
+        </AppContainer>
+      </MainTemplate>
+    </BrowserRouter>
+  </Provider>
 );
 
 const AppContainer = styled.div`

@@ -29,10 +29,7 @@ const MovieCard = ({
           <span>{year}</span>
         </AdditionalInfo>
       </InfoWrapper>
-      <ActionButton small secondary as={Button}>
-        ADD TO FAVOURITES
-      </ActionButton>
-      <Button small onClick={handleOnClick}>READ MORE</Button>
+      <Button small onClick={handleOnClick}>MORE</Button>
     </CardWrapper>
   );
 };
@@ -97,11 +94,6 @@ const AdditionalInfo = styled.div`
   @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
     font-size: 1.4rem;
   }
-`;
-
-const ActionButton = styled.button`
-  margin-bottom: 8px;
-  white-space: normal;
 `;
 
 MovieCard.propTypes = {

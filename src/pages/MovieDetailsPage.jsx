@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import styled from 'styled-components/macro';
 import { FaStar } from 'react-icons/fa';
+import MovieActionButtons from '../components/Movies/MovieActionButtons';
 import Button from '../components/Button';
 import Header from '../components/Header';
 import MovieImage from '../components/MovieImage';
@@ -51,6 +52,13 @@ const MovieDetailsPage = () => {
         <MovieWrapper>
           <LeftColumn>
             <MovieImage src={movie.Poster} title={movie.Titlte} />
+            <MovieActionButtons
+              title={movie.Title}
+              poster={movie.Poster}
+              type={movie.Type}
+              year={movie.Year}
+              id={id}
+            />
           </LeftColumn>
           <RightColumn>
             <h2>{movie.Title !== 'N/A' ? movie.Title : 'No data'}</h2>
@@ -136,7 +144,7 @@ const MovieWrapper = styled.div`
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   padding: 16px;
   border-radius: 8px;
-  
+
   @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
     gap: 32px;
   }
@@ -148,8 +156,10 @@ const MovieWrapper = styled.div`
 `;
 
 const LeftColumn = styled.div`
-   max-width: 300px;
-   flex: 1;
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
+  flex: 1;
 
   @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
     max-width: 350px;

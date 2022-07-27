@@ -11,14 +11,14 @@ const Sidebar = ({ isLogged }) => (
   <SidebarWrapper>
     <Logo />
     <NavigationWrapper>
-      {isLogged && (
+      {/* {isLogged && (
         <LinkItem>
           <Link as={NavLink} to={ROUTES.USER}>Edit profile</Link>
         </LinkItem>
-      )}
+      )} */}
       {isLogged && (
         <LinkItem>
-          <Link as={NavLink} to={ROUTES.WATCHLIST}>Watch list</Link>
+          <Link as={NavLink} to={ROUTES.WATCH_LIST}>Watch list</Link>
         </LinkItem>
       )}
       {isLogged && (
