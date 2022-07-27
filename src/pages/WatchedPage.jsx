@@ -4,12 +4,12 @@ import Header from '../components/Header';
 import MovieList from '../components/Movies/MovieList';
 
 const pageTitle = {
-  title: 'Favourites',
-  subtitle: 'Here you will find favourites movies and series',
+  title: 'Watched',
+  subtitle: 'Here you will find watched movies and series',
 };
 
-const FavouritesPage = () => {
-  const moviesObject = useSelector((store) => store.favourites);
+const WatchedPage = () => {
+  const moviesObject = useSelector((store) => store.watched);
   const [movies, setMovies] = useState(moviesObject);
 
   return (
@@ -20,4 +20,4 @@ const FavouritesPage = () => {
   );
 };
 
-export default FavouritesPage;
+export default WatchedPage;

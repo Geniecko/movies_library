@@ -1,52 +1,110 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable no-unused-expressions */
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
-import { addToWatchList, removeFromWatchList } from '../../actions/movieActions';
+import {
+  addToFavourites,
+  addToWatchList,
+  addToWatched,
+  removeFromWatched,
+  removeFromFavourites,
+  removeFromWatchList,
+} from '../../actions/movieActions';
 import Button from '../Button';
+
+const BUTTON_TYPES = {
+  WATCH_LIST: 'WATCH_LIST',
+  FAVOURITES: 'FAVOURITES',
+  WATCHED: 'WATCHED',
+};
 
 const MovieActionButtons = ({
   title, poster, type, year, id,
 }) => {
   const [isWatchList, setIsWatchList] = useState(false);
-  const moviesWatchList = useSelector((state) => state.watchList);
+  const [isFavourites, setIsFavourites] = useState(false);
+  const [isWatched, setIsWatched] = useState(false);
+  const watchList = useSelector((state) => state.watchList);
+  const favourites = useSelector((state) => state.favourites);
+  const watched = useSelector((state) => state.watched);
   const dispatch = useDispatch();
 
-  const isInArray = (movieId, movies) => {
-    if (movies.findIndex((movie) => movie.imdbID === movieId) === -1) { return false; }
+  const isInArray = (movies) => {
+    if (movies.findIndex((movie) => movie.imdbID === id) === -1) return false;
     return true;
   };
 
-  const handleClickWatchList = () => {
-    if (!isWatchList) {
-      dispatch(
-        addToWatchList({
-          title,
-          poster,
-          type,
-          year,
-          id,
-        }),
-      );
-    } else {
-      dispatch(
-        removeFromWatchList(id),
-      );
+  const handleClick = (actionType) => {
+    const movieObject = {
+      title,
+      poster,
+      type,
+      year,
+      id,
+    };
+
+    if (BUTTON_TYPES.FAVOURITES === actionType) {
+      if (!isFavourites) {
+        dispatch(addToFavourites(movieObject));
+      } else {
+        dispatch(removeFromFavourites(id));
+      }
+      setIsFavourites((prevValue) => !prevValue);
+    } else if (BUTTON_TYPES.WATCH_LIST === actionType) {
+      if (!isWatchList) {
+        dispatch(addToWatchList(movieObject));
+      } else {
+        dispatch(removeFromWatchList(id));
+      }
+      setIsWatchList((prevValue) => !prevValue);
+    } else if (BUTTON_TYPES.WATCHED === actionType) {
+      if (!isWatched) {
+        dispatch(addToWatched(movieObject));
+      } else {
+        dispatch(removeFromWatched(id));
+      }
+      setIsWatched((prevValue) => !prevValue);
     }
   };
 
   useEffect(() => {
-    if (isInArray(id, moviesWatchList)) {
-      setIsWatchList(true);
-    } else {
-      setIsWatchList(false);
-    }
-  }, [id, moviesWatchList]);
+    setIsWatched(isInArray(watched));
+  }, []);
+
+  useEffect(() => {
+    setIsFavourites(isInArray(favourites));
+  }, []);
+
+  useEffect(() => {
+    setIsWatchList(isInArray(watchList));
+  }, []);
 
   return (
-    <ActionButton as={Button} small onClick={handleClickWatchList}>
-      {!isWatchList ? 'ADD TO WATCH LIST' : 'REMOVE FROM WATCH LIST'}
-    </ActionButton>
+    <>
+      <ActionButton
+        as={Button}
+        small
+        onClick={() => handleClick(BUTTON_TYPES.WATCHED)}
+      >
+        {!isWatched ? 'ADD TO WATCHED' : 'REMOVE FROM WATCHED'}
+      </ActionButton>
+      <ActionButton
+        as={Button}
+        small
+        onClick={() => handleClick(BUTTON_TYPES.WATCH_LIST)}
+      >
+        {!isWatchList ? 'ADD TO WATCH LIST' : 'REMOVE FROM WATCH LIST'}
+      </ActionButton>
+      <ActionButton
+        as={Button}
+        small
+        onClick={() => handleClick(BUTTON_TYPES.FAVOURITES)}
+      >
+        {!isFavourites ? 'ADD TO FAVOURITES' : 'REMOVE FROM FAVOURITES'}
+      </ActionButton>
+    </>
   );
 };
 

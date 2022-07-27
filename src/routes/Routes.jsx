@@ -6,6 +6,7 @@ import { ROUTES } from '../constants/routes';
 import FavourtiesPage from '../pages/FavouritesPage';
 import MovieDetailsPage from '../pages/MovieDetailsPage';
 import WatchListPage from '../pages/WatchListPage';
+import WatchedPage from '../pages/WatchedPage';
 
 const Routes = () => (
   <RoutesWrapper>
@@ -16,6 +17,7 @@ const Routes = () => (
     <Route path={ROUTES.MOVIES_DETAILS} element={<MovieDetailsPage />} />
     <Route path={ROUTES.WATCH_LIST} element={<WatchListPage />} />
     <Route path={ROUTES.FAVOURITES} element={<FavourtiesPage />} />
+    <Route path={ROUTES.WATCHED} element={<WatchedPage />} />
   </RoutesWrapper>
 );
 
