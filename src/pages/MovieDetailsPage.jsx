@@ -22,7 +22,7 @@ const MovieDetailsPage = () => {
   const { searchValue } = location.state;
 
   const getMovie = async (movieId) => {
-    const url = `http://www.omdbapi.com/?i=${movieId}&plot=full&apikey=f760859f`;
+    const url = `https://www.omdbapi.com/?i=${movieId}&plot=full&apikey=f760859f`;
     const response = await fetch(url);
 
     if (!response.ok) {

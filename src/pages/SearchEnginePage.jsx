@@ -19,7 +19,7 @@ const SearchEngine = () => {
   const handleOnChange = (event) => setSearchValue(event.target.value);
 
   const getMovie = async (value) => {
-    const url = `http://www.omdbapi.com/?s=${value}&apikey=f760859f`;
+    const url = `https://www.omdbapi.com/?s=${value}&apikey=f760859f`;
     const response = await fetch(url);
     if (!response.ok) {
       const message = `An error has occured: ${response.status}`;
