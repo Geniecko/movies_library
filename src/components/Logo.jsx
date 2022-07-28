@@ -8,16 +8,18 @@ const LogoWrapper = styled.div`
   font-size: 2.4rem;
   color: ${({ theme }) => theme.color.white};
   cursor: pointer;
-  transition: transform .3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+  &:hover {
+    @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
+      transform: translateY(-8px);
+    }
+  }
 
   @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
     font-size: 3.2rem;
     text-align: center;
     margin-bottom: 40px;
-  }
-
-  &:hover{
-    transform: translateY(-8px);
   }
 
   span {

@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
+import { AiFillMinusCircle, AiFillPlusCircle } from 'react-icons/ai';
 import {
   addToFavourites,
   addToWatchList,
@@ -89,6 +90,7 @@ const MovieActionButtons = ({
         onClick={() => handleClick(BUTTON_TYPES.WATCHED)}
       >
         {!isWatched ? 'ADD TO WATCHED' : 'REMOVE FROM WATCHED'}
+        {!isWatched ? <AiFillPlusCircle /> : <AiFillMinusCircle />}
       </ActionButton>
       <ActionButton
         as={Button}
@@ -96,6 +98,7 @@ const MovieActionButtons = ({
         onClick={() => handleClick(BUTTON_TYPES.WATCH_LIST)}
       >
         {!isWatchList ? 'ADD TO WATCH LIST' : 'REMOVE FROM WATCH LIST'}
+        {!isWatchList ? <AiFillPlusCircle /> : <AiFillMinusCircle />}
       </ActionButton>
       <ActionButton
         as={Button}
@@ -103,6 +106,7 @@ const MovieActionButtons = ({
         onClick={() => handleClick(BUTTON_TYPES.FAVOURITES)}
       >
         {!isFavourites ? 'ADD TO FAVOURITES' : 'REMOVE FROM FAVOURITES'}
+        {!isFavourites ? <AiFillPlusCircle /> : <AiFillMinusCircle />}
       </ActionButton>
     </>
   );
@@ -118,7 +122,13 @@ MovieActionButtons.propTypes = {
 
 const ActionButton = styled.button`
   margin-top: 16px;
-  align-self: flex-end;
+  align-self: flex-start;
+  display: flex;
+  align-items: center;
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
+    align-self: flex-end;
+  }
 `;
 
 export default MovieActionButtons;

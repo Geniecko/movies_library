@@ -38,7 +38,7 @@ const ContentContainer = styled.main`
   }
 
   @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
-    padding: 32px 32px 32px 232px;
+    padding: 32px 32px 32px 257px;
   }
 
   @media (min-width: ${({ theme }) => theme.breakpoints.desktop}) {

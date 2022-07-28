@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams, useLocation } from 'react-router-dom';
 import styled from 'styled-components/macro';
 import { FaStar } from 'react-icons/fa';
+import { BsFillArrowLeftCircleFill } from 'react-icons/bs';
 import MovieActionButtons from '../components/Movies/MovieActionButtons';
 import Button from '../components/Button';
 import Header from '../components/Header';
@@ -58,6 +59,7 @@ const MovieDetailsPage = () => {
       <Header title={pageTitles.title} subtitle={pageTitles.subtitle} />
       <Button small onClick={handleOnClick}>
         GO BACK
+        <BsFillArrowLeftCircleFill />
       </Button>
       {!isEmpty ? (
         <MovieWrapper>

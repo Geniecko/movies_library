@@ -14,6 +14,14 @@ const Link = styled.a`
   font-size: 1.4rem;
   color: ${({ theme }) => theme.color.white};
   transition: 0.2s ease-in;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  svg{
+    margin: 0 4px;
+    font-size: 1.6rem;
+  }
 
   &:hover {
     opacity: 0.8;
