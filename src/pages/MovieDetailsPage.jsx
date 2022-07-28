@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams, useLocation } from 'react-router-dom';
 import styled from 'styled-components/macro';
 import { FaStar } from 'react-icons/fa';
 import MovieActionButtons from '../components/Movies/MovieActionButtons';
 import Button from '../components/Button';
 import Header from '../components/Header';
 import MovieImage from '../components/MovieImage';
+import { ROUTES } from '../constants/routes';
 
 const pageTitles = {
   title: 'Preview',
@@ -16,6 +17,8 @@ const MovieDetailsPage = () => {
   const [movie, setMovie] = useState({});
   const { id } = useParams();
   const navigate = useNavigate();
+  const location = useLocation();
+  const { searchValue } = location.state;
 
   const getMovie = async (movieId) => {
     const url = `http://www.omdbapi.com/?i=${movieId}&plot=full&apikey=f760859f`;
@@ -28,6 +31,14 @@ const MovieDetailsPage = () => {
 
     const responseJson = await response.json();
     setMovie(responseJson);
+  };
+
+  const handleOnClick = () => {
+    if (location.state.prevPath === ROUTES.MOVIES) {
+      navigate(ROUTES.MOVIES, { state: { searchValue } });
+    } else {
+      navigate(-1);
+    }
   };
 
   useEffect(() => {
@@ -45,7 +56,7 @@ const MovieDetailsPage = () => {
   return (
     <>
       <Header title={pageTitles.title} subtitle={pageTitles.subtitle} />
-      <Button small onClick={() => navigate(-1)}>
+      <Button small onClick={handleOnClick}>
         GO BACK
       </Button>
       {!isEmpty ? (

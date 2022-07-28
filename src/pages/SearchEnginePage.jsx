@@ -1,4 +1,6 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState, useMemo } from 'react';
+import { useLocation } from 'react-router-dom';
 import Header from '../components/Header';
 import Input from '../components/Input';
 import MovieList from '../components/Movies/MovieList';
@@ -10,6 +12,7 @@ const pageTitles = {
 };
 
 const SearchEngine = () => {
+  const location = useLocation();
   const [movies, setMovies] = useState([]);
   const [searchValue, setSearchValue] = useState('');
 
@@ -32,15 +35,22 @@ const SearchEngine = () => {
   };
 
   useEffect(() => {
-    getMovie(searchValue.trim());
+    if (searchValue.length > 0) {
+      getMovie(searchValue.trim());
+    }
   }, [searchValue]);
+
+  useEffect(() => {
+    if (location.state !== null && location.state.searchValue !== undefined) {
+      setSearchValue(location.state.searchValue);
+    }
+  }, []);
 
   const value = useMemo(
     () => ({
       searchValue,
-      setSearchValue,
     }),
-    [searchValue],
+    [searchValue, movies],
   );
 
   return (

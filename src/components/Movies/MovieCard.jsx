@@ -1,18 +1,21 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useContext } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import styled from 'styled-components/macro';
 import { ROUTES } from '../../constants/routes';
 import Button from '../Button';
 import MovieImage from '../MovieImage';
+import { MovieSearchContext } from '../../context/MovieContext';
 
 const MovieCard = ({
   title, poster, year, type, id,
 }) => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const { searchValue } = useContext(MovieSearchContext);
 
   const handleOnClick = () => {
-    navigate(`${ROUTES.MOVIES}/${id}`);
+    navigate(`${ROUTES.MOVIES}/${id}`, { state: { searchValue, prevPath: location.pathname } });
   };
 
   return (
@@ -29,7 +32,9 @@ const MovieCard = ({
           <span>{year}</span>
         </AdditionalInfo>
       </InfoWrapper>
-      <Button small onClick={handleOnClick}>MORE</Button>
+      <Button small onClick={handleOnClick}>
+        MORE
+      </Button>
     </CardWrapper>
   );
 };
@@ -78,7 +83,7 @@ const InfoWrapper = styled.div`
 `;
 
 const AdditionalInfo = styled.div`
- text-transform: capitalize;
+  text-transform: capitalize;
   display: block;
   font-weight: 600;
   font-size: 1.2rem;

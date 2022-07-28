@@ -4,7 +4,7 @@ import styled from 'styled-components/macro';
 
 const MovieImage = ({ src, title, click }) => {
   const isImage = src === ('N/A' || '') ? (
-    <ImagePlaceHolder>No poster</ImagePlaceHolder>
+    <ImagePlaceHolder onClick={click}>No poster</ImagePlaceHolder>
   ) : (
     <Image src={src} alt={title} onClick={click} />
   );
@@ -35,6 +35,7 @@ const ImagePlaceHolder = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 `;
 
 MovieImage.propTypes = {
