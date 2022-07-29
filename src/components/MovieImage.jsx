@@ -6,7 +6,7 @@ const MovieImage = ({ src, title, click }) => {
   const isImage = src === ('N/A' || '') ? (
     <ImagePlaceHolder onClick={click}>No poster</ImagePlaceHolder>
   ) : (
-    <Image src={src} alt={title} onClick={click} />
+    <Image src={src} alt={title} onClick={click} loading="lazy" />
   );
 
   return <ImageWrapper>{isImage}</ImageWrapper>;
@@ -16,6 +16,7 @@ const ImageWrapper = styled.div`
   aspect-ratio: 3/3.5;
   overflow: hidden;
   border-radius: 4px;
+  max-width: 325px;
 `;
 
 const Image = styled.img`
