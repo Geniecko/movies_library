@@ -4,11 +4,11 @@ const Input = styled.input`
   background-color: transparent;
   border-radius: 8px;
   padding: 8px 16px;
-  border: 1px solid ${({ theme }) => theme.color.primary};
+  border: 1px solid ${({ theme, secondary }) => (secondary ? theme.color.white : theme.color.primary)};
   outline: 0;
   font-size: 1.4rem;
   font-weight: 600;
-  color: ${({ theme }) => theme.color.primary};
+  color: ${({ theme, secondary }) => (secondary ? theme.color.white : theme.color.primary)};
 
   &::placeholder {
     color: ${({ theme }) => theme.color.grey};
