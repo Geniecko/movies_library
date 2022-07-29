@@ -7,7 +7,7 @@ export const themeLight = {
     pageBackground: '#F2F2F2',
   },
   breakpoints: {
-    desktopLarge: '1400px',
+    desktopLarge: '1200px',
     desktop: '996px',
     tablet: '768px',
     phone: '480px',
