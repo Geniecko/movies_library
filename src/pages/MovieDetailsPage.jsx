@@ -1,13 +1,17 @@
 import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { useNavigate, useParams, useLocation } from 'react-router-dom';
 import styled from 'styled-components/macro';
 import { FaStar } from 'react-icons/fa';
 import { BsFillArrowLeftCircleFill } from 'react-icons/bs';
+import { AiFillPlusCircle } from 'react-icons/ai';
+import { RiSettings3Fill } from 'react-icons/ri';
 import MovieActionButtons from '../components/Movies/MovieActionButtons';
 import Button from '../components/Button';
 import Header from '../components/Header';
 import MovieImage from '../components/MovieImage';
 import { ROUTES } from '../constants/routes';
+import RateForm from '../components/RateForm';
 
 const pageTitles = {
   title: 'Preview',
@@ -16,10 +20,24 @@ const pageTitles = {
 
 const MovieDetailsPage = () => {
   const [movie, setMovie] = useState({});
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isEditRateMode, setIsEditRateMode] = useState(false);
   const { id } = useParams();
   const navigate = useNavigate();
   const location = useLocation();
   const { searchValue } = location.state;
+  const rated = useSelector((state) => state.rated);
+
+  const isInArray = (movies) => {
+    if (movies.findIndex((item) => item.imdbID === id) === -1) return false;
+    return true;
+  };
+
+  const handleOnClose = () => setIsModalOpen(false);
+
+  const handleRateButton = () => {
+    setIsModalOpen(true);
+  };
 
   const getMovie = async (movieId) => {
     const url = `https://www.omdbapi.com/?i=${movieId}&plot=full&apikey=f760859f`;
@@ -46,6 +64,15 @@ const MovieDetailsPage = () => {
     getMovie(id);
   }, [id]);
 
+  useEffect(() => {
+    if (isInArray(rated)) {
+      setIsEditRateMode(true);
+    } else {
+      setIsEditRateMode(false);
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [rated]);
+
   const isEmpty = Object.keys(movie).length === 0;
 
   const genres = movie.Genre?.split(',');
@@ -56,6 +83,12 @@ const MovieDetailsPage = () => {
 
   return (
     <>
+      <RateForm
+        handleOnClose={handleOnClose}
+        isModalOpen={isModalOpen}
+        movie={movie}
+        isEditRateMode={isEditRateMode}
+      />
       <Header title={pageTitles.title} subtitle={pageTitles.subtitle} />
       <Button small onClick={handleOnClick}>
         GO BACK
@@ -72,6 +105,10 @@ const MovieDetailsPage = () => {
               year={movie.Year}
               id={id}
             />
+            <RateButton as={Button} small onClick={handleRateButton}>
+              {isEditRateMode ? 'Edit RATE' : 'Add RATE'}
+              {isEditRateMode ? <RiSettings3Fill /> : <AiFillPlusCircle />}
+            </RateButton>
           </LeftColumn>
           <RightColumn>
             <h2>{movie.Title !== 'N/A' ? movie.Title : 'No data'}</h2>
@@ -175,7 +212,7 @@ const LeftColumn = styled.div`
   flex: 1;
 
   @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
-    max-width: 350px;
+    max-width: 325px;
   }
 `;
 
@@ -227,6 +264,17 @@ const Score = styled.div`
   svg {
     color: #eccf29;
     margin-left: 8px;
+  }
+`;
+
+const RateButton = styled.button`
+  margin-top: 16px;
+  align-self: flex-start;
+  display: flex;
+  align-items: center;
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
+    align-self: flex-end;
   }
 `;
 
