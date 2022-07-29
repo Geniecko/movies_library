@@ -89,7 +89,7 @@ const MovieActionButtons = ({
         small
         onClick={() => handleClick(BUTTON_TYPES.WATCHED)}
       >
-        {!isWatched ? 'ADD TO WATCHED' : 'REMOVE FROM WATCHED'}
+        {!isWatched ? 'Add to WATCHED' : 'Remove from WATCHED'}
         {!isWatched ? <AiFillPlusCircle /> : <AiFillMinusCircle />}
       </ActionButton>
       <ActionButton
@@ -97,7 +97,7 @@ const MovieActionButtons = ({
         small
         onClick={() => handleClick(BUTTON_TYPES.WATCH_LIST)}
       >
-        {!isWatchList ? 'ADD TO WATCH LIST' : 'REMOVE FROM WATCH LIST'}
+        {!isWatchList ? 'Add to WATCH LIST' : 'Remove from WATCH LIST'}
         {!isWatchList ? <AiFillPlusCircle /> : <AiFillMinusCircle />}
       </ActionButton>
       <ActionButton
@@ -105,7 +105,7 @@ const MovieActionButtons = ({
         small
         onClick={() => handleClick(BUTTON_TYPES.FAVOURITES)}
       >
-        {!isFavourites ? 'ADD TO FAVOURITES' : 'REMOVE FROM FAVOURITES'}
+        {!isFavourites ? 'Add to FAVOURITES' : 'Remove from FAVOURITES'}
         {!isFavourites ? <AiFillPlusCircle /> : <AiFillMinusCircle />}
       </ActionButton>
     </>
