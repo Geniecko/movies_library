@@ -1,3 +1,3 @@
 export const LS_KEY = {
-  REDUX_STATE: 'ReduxState',
+  REDUX_STATE: 'ReduxState_2',
 };
