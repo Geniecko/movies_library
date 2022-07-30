@@ -87,26 +87,29 @@ const MovieActionButtons = ({
       <ActionButton
         as={Button}
         small
+        secondary={isWatched}
         onClick={() => handleClick(BUTTON_TYPES.WATCHED)}
       >
-        {!isWatched ? 'Add to WATCHED' : 'Remove from WATCHED'}
-        {!isWatched ? <AiFillPlusCircle /> : <AiFillMinusCircle />}
+        {isWatched ? 'Remove from WATCHED' : 'Add to WATCHED'}
+        {isWatched ? <AiFillMinusCircle /> : <AiFillPlusCircle /> }
       </ActionButton>
       <ActionButton
         as={Button}
         small
+        secondary={isWatchList}
         onClick={() => handleClick(BUTTON_TYPES.WATCH_LIST)}
       >
-        {!isWatchList ? 'Add to WATCH LIST' : 'Remove from WATCH LIST'}
-        {!isWatchList ? <AiFillPlusCircle /> : <AiFillMinusCircle />}
+        {isWatchList ? 'Remove from WATCH LIST' : 'Add to WATCH LIST'}
+        {isWatchList ? <AiFillMinusCircle /> : <AiFillPlusCircle />}
       </ActionButton>
       <ActionButton
         as={Button}
         small
+        secondary={isFavourites}
         onClick={() => handleClick(BUTTON_TYPES.FAVOURITES)}
       >
-        {!isFavourites ? 'Add to FAVOURITES' : 'Remove from FAVOURITES'}
-        {!isFavourites ? <AiFillPlusCircle /> : <AiFillMinusCircle />}
+        {isFavourites ? 'Remove from FAVOURITES' : 'Add to FAVOURITES'}
+        {isFavourites ? <AiFillMinusCircle /> : <AiFillPlusCircle />}
       </ActionButton>
     </>
   );

@@ -70,7 +70,7 @@ const MovieDetailsPage = () => {
     } else {
       setIsEditRateMode(false);
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [rated]);
 
   const isEmpty = Object.keys(movie).length === 0;
@@ -105,7 +105,12 @@ const MovieDetailsPage = () => {
               year={movie.Year}
               id={id}
             />
-            <RateButton as={Button} small onClick={handleRateButton}>
+            <RateButton
+              as={Button}
+              small
+              secondary={isEditRateMode}
+              onClick={handleRateButton}
+            >
               {isEditRateMode ? 'Edit RATE' : 'Add RATE'}
               {isEditRateMode ? <RiSettings3Fill /> : <AiFillPlusCircle />}
             </RateButton>

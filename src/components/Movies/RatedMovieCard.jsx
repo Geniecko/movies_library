@@ -68,8 +68,10 @@ const Card = styled.div`
   img {
     cursor: pointer;
 
-    &:hover {
-      transform: scale(1.05);
+    @media (hover: hover){
+      &:hover {
+        transform: scale(1.05);
+      }
     }
   }
 `;

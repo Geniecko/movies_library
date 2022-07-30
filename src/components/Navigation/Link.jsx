@@ -23,8 +23,10 @@ const Link = styled.a`
     font-size: 1.6rem;
   }
 
-  &:hover {
-    opacity: 0.8;
+  @media (hover: hover){
+    &:hover {
+      opacity: 0.8;
+    }
   }
 
   &.active {
