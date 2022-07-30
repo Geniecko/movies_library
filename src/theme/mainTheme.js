@@ -1,7 +1,7 @@
 export const themeLight = {
   color: {
-    primary: '#D82259',
-    secondary: '#494949',
+    primary: '#046E8F',
+    secondary: '#183446',
     grey: '#D0D0D0',
     white: '#F2F2F2',
     pageBackground: '#F2F2F2',

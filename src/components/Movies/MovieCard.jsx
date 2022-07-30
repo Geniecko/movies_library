@@ -70,8 +70,11 @@ const Title = styled.h2`
   cursor: pointer;
   align-self: flex-start;
 
-  &:hover {
-    color: ${({ theme }) => theme.color.primary};
+
+  @media (hover: hover){
+    &:hover {
+      color: ${({ theme }) => theme.color.primary};
+    }
   }
 `;
 
@@ -88,18 +91,14 @@ const AdditionalInfo = styled.div`
   text-transform: capitalize;
   display: block;
   font-weight: 600;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   color: ${({ theme }) => theme.color.primary};
 
   span {
     text-transform: capitalize;
     margin-left: 4px;
-    font-weight: 300;
+    font-weight: 400;
     color: ${({ theme }) => theme.color.secondary};
-  }
-
-  @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
-    font-size: 1.4rem;
   }
 `;
 

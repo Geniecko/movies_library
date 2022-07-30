@@ -25,7 +25,7 @@ const LogoWrapper = styled.div`
   }
 
   span {
-    font-weight: 300;
+    font-weight: 600;
     font-size: 1.6rem;
     color: ${({ theme }) => theme.color.primary};
     margin-left: 8px;
