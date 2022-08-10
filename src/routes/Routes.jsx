@@ -12,10 +12,10 @@ import RatedPage from '../pages/RatedPage';
 const Routes = () => (
   <RoutesWrapper>
     <Route path="*" element={<NotFoundPage />} />
-    <Route path="/" element={<Navigate replace to={ROUTES.MOVIES} />} />
+    <Route path="/" element={<Navigate replace to={ROUTES.SEARCH_ENGINE} />} />
 
-    <Route path={ROUTES.MOVIES} element={<SearchEnginePage />} />
-    <Route path={ROUTES.MOVIES_DETAILS} element={<MovieDetailsPage />} />
+    <Route path={ROUTES.SEARCH_ENGINE} element={<SearchEnginePage />} />
+    <Route path={ROUTES.MOVIE_DETAILS} element={<MovieDetailsPage />} />
     <Route path={ROUTES.WATCH_LIST} element={<WatchListPage />} />
     <Route path={ROUTES.FAVOURITES} element={<FavourtiesPage />} />
     <Route path={ROUTES.WATCHED} element={<WatchedPage />} />

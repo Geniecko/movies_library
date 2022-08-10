@@ -1,9 +1,7 @@
 export const ROUTES = {
-  MOVIES: '/movies',
-  MOVIES_DETAILS: '/movies/:id',
-  USER: '/user',
-  LOGIN: '/login',
-  REGISTER: '/register',
+  SEARCH_ENGINE: '/search-engine',
+  MOVIE: '/movie',
+  MOVIE_DETAILS: '/movie/:id',
   WATCH_LIST: '/watch-list',
   FAVOURITES: '/favourites',
   RATED: '/rated',

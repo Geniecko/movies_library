@@ -53,8 +53,8 @@ const MovieDetailsPage = () => {
   };
 
   const handleOnClick = () => {
-    if (location.state.prevPath === ROUTES.MOVIES) {
-      navigate(ROUTES.MOVIES, { state: { searchValue } });
+    if (location.state.prevPath === ROUTES.SEARCH_ENGINE) {
+      navigate(ROUTES.SEARCH_ENGINE, { state: { searchValue } });
     } else {
       navigate(-1);
     }

@@ -16,7 +16,7 @@ const RatedMovieCard = ({
   const { searchValue } = useContext(MovieSearchContext);
 
   const handleOnClick = () => {
-    navigate(`${ROUTES.MOVIES}/${id}`, {
+    navigate(`${ROUTES.MOVIE}/${id}`, {
       state: { searchValue, prevPath: location.pathname },
     });
   };

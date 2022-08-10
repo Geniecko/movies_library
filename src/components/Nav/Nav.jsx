@@ -1,18 +1,21 @@
 import React, { useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
 import { NavLink, useLocation } from 'react-router-dom';
 import { FiMenu } from 'react-icons/fi';
 import {
-  AiOutlineClose, AiFillHeart, AiFillEye, AiFillStar, AiOutlineSearch,
+  AiOutlineClose,
+  AiFillHeart,
+  AiFillEye,
+  AiFillStar,
+  AiOutlineSearch,
 } from 'react-icons/ai';
 import { RiFileList2Fill } from 'react-icons/ri';
 import styled from 'styled-components/macro';
 import Logo from '../Logo';
-import LinkItem from './LinkItem';
-import Link from './Link';
+import NavItem from '../NavItem/NavItem';
+import Link from '../Link/Link';
 import { ROUTES } from '../../constants/routes';
 
-const Sidebar = ({ isLogged }) => {
+const Nav = () => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
 
@@ -24,77 +27,54 @@ const Sidebar = ({ isLogged }) => {
     setIsOpen(false);
   }, [location.pathname]);
 
+  const LinksData = [
+    {
+      label: 'watch list',
+      target: ROUTES.WATCH_LIST,
+      iconElement: <RiFileList2Fill />,
+    },
+    {
+      label: 'Favourites',
+      target: ROUTES.FAVOURITES,
+      iconElement: <AiFillHeart />,
+    },
+    {
+      label: 'Rated',
+      target: ROUTES.RATED,
+      iconElement: <AiFillStar />,
+    },
+    {
+      label: 'Watched',
+      target: ROUTES.WATCHED,
+      iconElement: <AiFillEye />,
+    },
+    {
+      label: 'Search Engine',
+      target: ROUTES.SEARCH_ENGINE,
+      iconElement: <AiOutlineSearch />,
+    },
+  ];
+
+  const NavLinks = LinksData.map((link) => (
+    <NavItem key={link.label}>
+      <Link as={NavLink} to={link.target}>
+        {link.label}
+        {link.iconElement}
+      </Link>
+    </NavItem>
+  ));
+
   return (
-    <SidebarWrapper>
+    <NavWrapper>
       <Logo setIsOpen={setIsOpen} />
       <NavigationWrapper isOpen={isOpen}>
-        {/* {isLogged && (
-              <LinkItem>
-                <Link as={NavLink} to={ROUTES.USER}>Edit profile</Link>
-              </LinkItem>
-            )} */}
-        {isLogged && (
-          <LinkItem>
-            <Link as={NavLink} to={ROUTES.WATCH_LIST}>
-              Watch list
-              <RiFileList2Fill />
-            </Link>
-          </LinkItem>
-        )}
-        {isLogged && (
-          <LinkItem>
-            <Link as={NavLink} to={ROUTES.FAVOURITES}>
-              Favourites
-              <AiFillHeart />
-            </Link>
-          </LinkItem>
-        )}
-        {isLogged && (
-          <LinkItem>
-            <Link as={NavLink} to={ROUTES.RATED}>
-              rated
-              <AiFillStar />
-            </Link>
-          </LinkItem>
-        )}
-        {isLogged && (
-          <LinkItem>
-            <Link as={NavLink} to={ROUTES.WATCHED}>
-              watched
-              <AiFillEye />
-            </Link>
-          </LinkItem>
-        )}
-        {!isLogged && (
-          <LinkItem>
-            <Link as={NavLink} to={ROUTES.LOGIN}>
-              Sign in
-            </Link>
-          </LinkItem>
-        )}
-        {!isLogged && (
-          <LinkItem>
-            <Link as={NavLink} to={ROUTES.REGISTER}>
-              Create account
-            </Link>
-          </LinkItem>
-        )}
-        <LinkItem>
-          <Link as={NavLink} end to={ROUTES.MOVIES}>
-            Search engine
-            <AiOutlineSearch />
-          </Link>
-        </LinkItem>
+        {NavLinks}
       </NavigationWrapper>
       <ToggleButton onClick={handleOnClick}>
         {isOpen ? <AiOutlineClose /> : <FiMenu />}
       </ToggleButton>
-    </SidebarWrapper>
+    </NavWrapper>
   );
-};
-
-Sidebar.propTypes = {
-  isLogged: PropTypes.bool.isRequired,
 };
 
 const NavigationWrapper = styled.nav`
@@ -114,7 +94,7 @@ const NavigationWrapper = styled.nav`
   }
 `;
 
-const SidebarWrapper = styled.aside`
+const NavWrapper = styled.aside`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -164,4 +144,4 @@ const ToggleButton = styled.button`
   }
 `;
 
-export default Sidebar;
+export default Nav;

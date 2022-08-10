@@ -15,7 +15,7 @@ const MovieCard = ({
   const { searchValue } = useContext(MovieSearchContext);
 
   const handleOnClick = () => {
-    navigate(`${ROUTES.MOVIES}/${id}`, { state: { searchValue, prevPath: location.pathname } });
+    navigate(`${ROUTES.MOVIE}/${id}`, { state: { searchValue, prevPath: location.pathname } });
   };
 
   return (

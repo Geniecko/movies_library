@@ -3,6 +3,21 @@ import styled from 'styled-components/macro';
 import { useNavigate } from 'react-router-dom';
 import { ROUTES } from '../constants/routes';
 
+const Logo = () => {
+  const navigate = useNavigate();
+
+  const handleOnClick = () => {
+    navigate(`${ROUTES.SEARCH_ENGINE}`);
+  };
+
+  return (
+    <LogoWrapper onClick={handleOnClick}>
+      MOVIES
+      <span>LIBRARY</span>
+    </LogoWrapper>
+  );
+};
+
 const LogoWrapper = styled.div`
   font-weight: 700;
   font-size: 2.4rem;
@@ -37,20 +52,5 @@ const LogoWrapper = styled.div`
     }
   }
 `;
-
-const Logo = () => {
-  const navigate = useNavigate();
-
-  const handleOnClick = () => {
-    navigate(`${ROUTES.MOVIES}`);
-  };
-
-  return (
-    <LogoWrapper onClick={handleOnClick}>
-      MOVIES
-      <span>LIBRARY</span>
-    </LogoWrapper>
-  );
-};
 
 export default Logo;

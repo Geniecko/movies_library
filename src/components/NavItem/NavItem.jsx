@@ -1,6 +1,6 @@
 import styled from 'styled-components/macro';
 
-const LinkItem = styled.div`
+const NavItem = styled.div`
   width: 100%;
   margin-bottom: 12px;
   overflow: hidden;
@@ -12,4 +12,4 @@ const LinkItem = styled.div`
   }
 `;
 
-export default LinkItem;
+export default NavItem;
