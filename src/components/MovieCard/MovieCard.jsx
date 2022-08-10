@@ -3,8 +3,8 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import styled from 'styled-components/macro';
 import { ROUTES } from '../../constants/routes';
-import Button from '../Button';
-import MovieImage from '../MovieImage';
+import Button from '../Button/Button';
+import MovieImage from '../MovieImage/MovieImage';
 import { MovieSearchContext } from '../../context/MovieContext';
 
 const MovieCard = ({

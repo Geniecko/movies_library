@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
-import Header from '../components/Header';
-import MovieList from '../components/Movies/MovieList';
+import Header from '../components/Header/Header';
+import MovieList from '../components/MovieList/MovieList';
 
 const pageTitle = {
   title: 'Favourites',

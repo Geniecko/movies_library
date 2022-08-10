@@ -1,9 +1,9 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState, useMemo } from 'react';
 import { useLocation } from 'react-router-dom';
-import Header from '../components/Header';
-import Input from '../components/Input';
-import MovieList from '../components/Movies/MovieList';
+import Header from '../components/Header/Header';
+import Input from '../components/Input/Input';
+import MovieList from '../components/MovieList/MovieList';
 import { MovieSearchContext } from '../context/MovieContext';
 
 const pageTitles = {

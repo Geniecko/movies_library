@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 import { useNavigate, useLocation } from 'react-router-dom';
 import styled from 'styled-components/macro';
 import { FaStar } from 'react-icons/fa';
-import MovieImage from '../MovieImage';
+import MovieImage from '../MovieImage/MovieImage';
 import { ROUTES } from '../../constants/routes';
 import { MovieSearchContext } from '../../context/MovieContext';
-import Button from '../Button';
+import Button from '../Button/Button';
 
 const RatedMovieCard = ({
   title, poster, id, rate, rateComment, plot,

@@ -6,12 +6,12 @@ import { FaStar } from 'react-icons/fa';
 import { BsFillArrowLeftCircleFill } from 'react-icons/bs';
 import { AiFillPlusCircle } from 'react-icons/ai';
 import { RiSettings3Fill } from 'react-icons/ri';
-import MovieActionButtons from '../components/Movies/MovieActionButtons';
-import Button from '../components/Button';
-import Header from '../components/Header';
-import MovieImage from '../components/MovieImage';
+import MovieActionButtons from '../components/MovieActionButtons/MovieActionButtons';
+import Button from '../components/Button/Button';
+import Header from '../components/Header/Header';
+import MovieImage from '../components/MovieImage/MovieImage';
 import { ROUTES } from '../constants/routes';
-import RateForm from '../components/RateForm';
+import RateForm from '../components/RateForm/RateForm';
 
 const pageTitles = {
   title: 'Preview',

@@ -5,9 +5,9 @@ import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import { FaStar } from 'react-icons/fa';
 import styled from 'styled-components/macro';
-import Modal from './Modal';
-import Button from './Button';
-import { addRate, removeRate, editRate } from '../actions/movieActions';
+import Modal from '../Modal/Modal';
+import Button from '../Button/Button';
+import { addRate, removeRate, editRate } from '../../actions/movieActions';
 
 const RateForm = ({
   handleOnClose, isModalOpen, movie, isEditRateMode

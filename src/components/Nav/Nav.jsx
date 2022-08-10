@@ -10,7 +10,7 @@ import {
 } from 'react-icons/ai';
 import { RiFileList2Fill } from 'react-icons/ri';
 import styled from 'styled-components/macro';
-import Logo from '../Logo';
+import Logo from '../Logo/Logo';
 import NavItem from '../NavItem/NavItem';
 import Link from '../Link/Link';
 import { ROUTES } from '../../constants/routes';

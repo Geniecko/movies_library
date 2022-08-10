@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import styled from 'styled-components/macro';
 import { useSelector } from 'react-redux';
-import Header from '../components/Header';
-import MoviesFilter from '../components/Movies/MoviesFilter';
-import RatedListMovie from '../components/Movies/RatedListMovie';
+import Header from '../components/Header/Header';
+import FilterPanel from '../components/FilterPanel/FilterPanel';
+import RatedMovieList from '../components/RatedMovieList/RatedMovieList';
 
 const pageTitle = {
   title: 'Rated',
@@ -16,19 +16,19 @@ const RatedPage = () => {
   return (
     <>
       <Header title={pageTitle.title} subtitle={pageTitle.subtitle} />
-      <FilterPanel>
+      <FilterWrapper>
         <NumberFound>
           Found:
           <span>{movies.length || 'No results'}</span>
         </NumberFound>
-        <MoviesFilter movies={movies} setMovies={setMovies} />
-      </FilterPanel>
-      <RatedListMovie movies={movies} />
+        <FilterPanel movies={movies} setMovies={setMovies} />
+      </FilterWrapper>
+      <RatedMovieList movies={movies} />
     </>
   );
 };
 
-const FilterPanel = styled.div`
+const FilterWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 16px;

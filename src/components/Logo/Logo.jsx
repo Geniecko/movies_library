@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components/macro';
 import { useNavigate } from 'react-router-dom';
-import { ROUTES } from '../constants/routes';
+import { ROUTES } from '../../constants/routes';
 
 const Logo = () => {
   const navigate = useNavigate();

@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components/macro';
-import MovieCard from './MovieCard';
-import MoviesFilter from './MoviesFilter';
+import MovieCard from '../MovieCard/MovieCard';
+import FilterPanel from '../FilterPanel/FilterPanel';
 
 const MovieList = ({ movies, setMovies }) => {
   const moviesList = movies.map((movie) => (
@@ -18,19 +18,19 @@ const MovieList = ({ movies, setMovies }) => {
 
   return (
     <>
-      <FilterPanel>
+      <FilterWrapper>
         <NumberFound>
           Found:
           <span>{moviesList.length || 'No results'}</span>
         </NumberFound>
-        <MoviesFilter movies={movies} setMovies={setMovies} />
-      </FilterPanel>
+        <FilterPanel movies={movies} setMovies={setMovies} />
+      </FilterWrapper>
       <GridWrapper>{moviesList}</GridWrapper>
     </>
   );
 };
 
-const FilterPanel = styled.div`
+const FilterWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 16px;

@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes, { objectOf } from 'prop-types';
 import styled from 'styled-components/macro';
-import RatedMovieCard from './RatedMovieCard';
+import RatedMovieCard from '../RatedMovieCard/RatedMovieCard';
 
-const RatedListMovie = ({ movies }) => {
+const RatedMovieList = ({ movies }) => {
   const ratedList = movies.map((movie) => (
     <RatedMovieCard
       key={movie.imdbID}
@@ -41,8 +41,8 @@ const RatedListWrapper = styled.div`
   }
 `;
 
-RatedListMovie.propTypes = {
+RatedMovieList.propTypes = {
   movies: PropTypes.arrayOf(objectOf).isRequired,
 };
 
-export default RatedListMovie;
+export default RatedMovieList;

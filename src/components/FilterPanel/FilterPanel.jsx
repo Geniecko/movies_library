@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components/macro';
-import Button from '../Button';
+import Button from '../Button/Button';
 
-const MoviesFilter = ({ movies, setMovies }) => {
+const FilterPanel = ({ movies, setMovies }) => {
   const sortByTitle = () => {
     movies.sort((a, b) => {
       if (a.Title < b.Title) {
@@ -53,9 +53,9 @@ const FilterWrapper = styled.div`
   font-size: 1.4rem;
 `;
 
-MoviesFilter.propTypes = {
+FilterPanel.propTypes = {
   movies: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
   setMovies: PropTypes.func.isRequired,
 };
 
-export default MoviesFilter;
+export default FilterPanel;

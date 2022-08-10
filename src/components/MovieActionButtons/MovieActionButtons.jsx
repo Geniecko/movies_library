@@ -13,7 +13,7 @@ import {
   removeFromFavourites,
   removeFromWatchList,
 } from '../../actions/movieActions';
-import Button from '../Button';
+import Button from '../Button/Button';
 
 const BUTTON_TYPES = {
   WATCH_LIST: 'WATCH_LIST',
