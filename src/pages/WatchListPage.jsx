@@ -9,13 +9,13 @@ const pageTitle = {
 };
 
 const WatchListPage = () => {
-  const moviesObject = useSelector((store) => store.watchList);
-  const [movies, setMovies] = useState(moviesObject);
+  const watchListObject = useSelector((store) => store.watchList);
+  const [watchList, setWatchList] = useState(watchListObject);
 
   return (
     <>
       <Header title={pageTitle.title} subtitle={pageTitle.subtitle} />
-      <MovieList movies={movies} setMovies={setMovies} />
+      <MovieList movies={watchList} setMovies={setWatchList} />
     </>
   );
 };

@@ -9,13 +9,13 @@ const pageTitle = {
 };
 
 const FavouritesPage = () => {
-  const moviesObject = useSelector((store) => store.favourites);
-  const [movies, setMovies] = useState(moviesObject);
+  const favouritesObject = useSelector((store) => store.favourites);
+  const [favourites, setFavourites] = useState(favouritesObject);
 
   return (
     <>
       <Header title={pageTitle.title} subtitle={pageTitle.subtitle} />
-      <MovieList movies={movies} setMovies={setMovies} />
+      <MovieList movies={favourites} setMovies={setFavourites} />
     </>
   );
 };

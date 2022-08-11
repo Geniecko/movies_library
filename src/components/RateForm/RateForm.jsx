@@ -43,7 +43,8 @@ const RateForm = ({
     const movieObject = {
       title: movie.Title,
       poster: movie.Poster,
-      plot: movie.Plot,
+      type: movie.Type,
+      year: movie.Year,
       id: movie.imdbID,
       rate: rateValue,
       rateComment: commentRateValue,

@@ -69,13 +69,14 @@ export const removeFromWatched = (id) => ({
 });
 
 export const addRate = ({
-  title, poster, plot, id, rate, rateComment,
+  title, poster, type, year, id, rate, rateComment,
 }) => ({
   type: ADD_RATE,
   payload: {
     Title: title,
     Poster: poster,
-    Plot: plot,
+    Type: type,
+    Year: year,
     imdbID: id,
     rate,
     rateComment,

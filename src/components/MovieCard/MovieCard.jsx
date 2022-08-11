@@ -2,24 +2,57 @@ import React, { useContext } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import styled from 'styled-components/macro';
+import { FaStar } from 'react-icons/fa';
 import { ROUTES } from '../../constants/routes';
 import Button from '../Button/Button';
 import MovieImage from '../MovieImage/MovieImage';
 import { MovieSearchContext } from '../../context/MovieContext';
 
 const MovieCard = ({
-  title, poster, year, type, id,
+  title, poster, year, type, id, rate, rateComment,
 }) => {
   const navigate = useNavigate();
   const location = useLocation();
   const { searchValue } = useContext(MovieSearchContext);
 
   const handleOnClick = () => {
-    navigate(`${ROUTES.MOVIE}/${id}`, { state: { searchValue, prevPath: location.pathname } });
+    navigate(`${ROUTES.MOVIE}/${id}`, {
+      state: { searchValue, prevPath: location.pathname },
+    });
   };
 
+  const createStars = () => {
+    const stars = [];
+    for (let i = 0; i < rate; i += 1) {
+      stars.push(<FaStar key={i} />);
+    }
+    return stars;
+  };
+
+  const stars = createStars();
+
+  const rateEl = rate > 0 && (
+    <Rate>
+      <span>Your rate:</span>
+      <StarsWrapper>
+        {stars}
+        <span>
+          {rate}
+          {' / 10'}
+        </span>
+      </StarsWrapper>
+    </Rate>
+  );
+
+  const rateCommentEl = rateComment && (
+    <Rate>
+      <span>Your comment rate:</span>
+      <p>{rateComment}</p>
+    </Rate>
+  );
+
   return (
-    <CardWrapper>
+    <Card>
       <MovieImage src={poster} title={title} click={handleOnClick} />
       <Title onClick={handleOnClick}>{title}</Title>
       <InfoWrapper>
@@ -32,14 +65,16 @@ const MovieCard = ({
           <span>{year}</span>
         </AdditionalInfo>
       </InfoWrapper>
-      <Button small onClick={handleOnClick}>
+      {rateEl}
+      {rateCommentEl}
+      <Button small secondary={rate > 0 && true} onClick={handleOnClick}>
         MORE
       </Button>
-    </CardWrapper>
+    </Card>
   );
 };
 
-const CardWrapper = styled.div`
+const Card = styled.div`
   display: flex;
   flex-direction: column;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
@@ -48,12 +83,12 @@ const CardWrapper = styled.div`
 
   img {
     cursor: pointer;
-    
-    @media (hover: hover){
+
+    @media (hover: hover) {
       &:hover {
         transform: scale(1.05);
       }
-    } 
+    }
   }
 `;
 
@@ -70,8 +105,7 @@ const Title = styled.h2`
   cursor: pointer;
   align-self: flex-start;
 
-
-  @media (hover: hover){
+  @media (hover: hover) {
     &:hover {
       color: ${({ theme }) => theme.color.primary};
     }
@@ -102,12 +136,57 @@ const AdditionalInfo = styled.div`
   }
 `;
 
+const Rate = styled.div`
+  padding: 16px;
+  background-color: ${({ theme }) => theme.color.primary};
+  border-radius: 8px;
+  color: ${({ theme }) => theme.color.white};
+  margin-bottom: 16px;
+
+  span {
+    font-weight: 300;
+    display: block;
+    font-size: 1.4rem;
+    margin-bottom: 8px;
+  }
+
+  p {
+    font-weight: 600;
+    margin: 0;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+`;
+
+const StarsWrapper = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+
+  span {
+    width: 100%;
+    font-weight: 600;
+    display: block;
+    margin-top: 4px;
+    margin-bottom: 0;
+  }
+`;
+
 MovieCard.propTypes = {
   title: PropTypes.string.isRequired,
   poster: PropTypes.string.isRequired,
   year: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
+  rate: PropTypes.number,
+  rateComment: PropTypes.string,
+};
+
+MovieCard.defaultProps = {
+  rate: 0,
+  rateComment: '',
 };
 
 export default MovieCard;
